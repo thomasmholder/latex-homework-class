@@ -125,6 +125,14 @@ option:
 \documentclass[11pt,newpage]{homework}
 ```
 
+#### Automatic filbreak
+
+If you'd like to automatically instead a filbreak at the beginning of each question, excepting the first, include the `filbreak` option. This will break the page at the start of each question only if the question will require a pagebreak at some point:
+
+```latex
+\documentclass[11pt,filbreak]{homework}
+```
+
 ### Spacious margins
 
 To enhance the readability of your documents, you can add the `largemargins`
