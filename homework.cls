@@ -101,6 +101,12 @@
   \ifthenelse{\equal{\@opnewpage}{1}}{%
     \newpage%
   }{}%
+
+  % Emit \filbreak if option `filbreak` is present
+  \ifthenelse{\equal{\@opfilbreak}{1} \AND \value{questionCounter} > 0}{%
+    \filbreak%
+  }{}%
+
   % Wrap in minipage so that we don't get a line break enywhere in between
   \begin{minipage}{\linewidth}%
     \addtocounter{questionCounter}{1}%
