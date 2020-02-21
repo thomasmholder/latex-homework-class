@@ -9,7 +9,10 @@
 \DeclareOption{newpage}{\renewcommand\@opnewpage{1}}
 \newcommand\@oplargemargins{0}
 \DeclareOption{largemargins}{\renewcommand\@oplargemargins{1}}
+\newcommand\@opfilbreak{0}
+\DeclareOption{filbreak}{\renewcommand\@opfilbreak{1}}
 \ProcessOptions
+
 
 % ----- Packages --------------------------------------------------------------
 
