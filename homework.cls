@@ -72,6 +72,11 @@
     \newpage
   }{}
 
+  % Emit \filbreak if option `filbreak` is present
+  \ifthenelse{\equal{\@opfilbreak}{1} \AND \value{questionCounter} > 0}{%
+    \filbreak
+  }{}
+
   % Wrap in minipage so that we don't get a line break enywhere in between
   \begin{minipage}{\linewidth}%
     \stepcounter{questionCounter}%
@@ -86,6 +91,7 @@
         \fi
       \vspace{0.3em} \hrule \vspace{.1in}%
   \end{minipage}
+
 }
 
 % Named question, takes one argument
