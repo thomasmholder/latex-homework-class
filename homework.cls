@@ -163,10 +163,26 @@
 \pagestyle{empty}
 \pagestyle{fancy}
 
+% make header options optional
+
+\newcommand{\setupheader}{%
+  \ifthenelse{\isundefined{\hwname}}{\newcommand{\hwname}{}}{}
+  \ifthenelse{\isundefined{\hwemail}}{\newcommand{\hwemail}{}}{}
+  \ifthenelse{\isundefined{\hwtype}}{\newcommand{\hwtype}{}}{}
+  \ifthenelse{\isundefined{\hwnum}}{\newcommand{\hwnum}{}}{}
+  \ifthenelse{\isundefined{\hwclass}}{\newcommand{\hwclass}{}}{}
+  \ifthenelse{\isundefined{\hwlecture}}{\newcommand{\hwlecture}{}}{}
+  \ifthenelse{\isundefined{\hwsection}}{\newcommand{\hwsection}{}}{}
+  \ifthenelse{\isundefined{\hwdate}}{\newcommand{\hwdate}{\today}}{}
+}
+
 %\if\@opanon%
 \ifthenelse{\equal{\@opanon}{0}}{%
   \renewcommand{\maketitle}[0]{%
     % Setup header
+
+    \setupheader
+
     \setlength{\headheight}{15.2pt}
     \setlength{\headsep}{0.2in}
     \lhead{\hwclass{} \hwlecture\hwsection}%
@@ -183,9 +199,9 @@
     \begin{center}
       {\Large \hwclass{} \hwtype{} \hwnum}
 
-      \hwname{} (\hwemail)
+      \hwname{} \ifthenelse{\equal{\hwemail}{}}{}{(\hwemail)}
 
-      \today
+      \hwdate
     \end{center}
     \renewcommand{\headrulewidth}{0.4pt}
   }
@@ -196,13 +212,16 @@
     % Make all pages plain
     \pagestyle{plain}
 
+    % Complete any blank options
+    \completeoptions
+
     % Put header on it's own page
     \begin{center}
       {\Large \hwclass{} \hwtype{} \hwnum}
 
       \hwname{} (\hwemail)
 
-      \today
+      \hwdate
     \end{center}
     \renewcommand{\headrulewidth}{0.4pt}
     \newpage
